@@ -5,9 +5,9 @@ $LOAD_PATH.unshift "#{ENV["PROJECT_X_BASE"]}/lib/"
 
 TABLE_FILEPATH = "#{ENV['HOME']}/src/project-x/mozart/project-x-musicdb.tct"
 require "socket"
-require "messier/application"
-require "messier/card"
-require "messier/list"
+require "spandex/application"
+require "spandex/card"
+require "spandex/list"
 require "messier/artist"
 
 class ListCard < Spandex::Card
@@ -67,7 +67,7 @@ class Tracks < ListCard
   jog_wheel_button :method => :play
 
   def play
-    ids = @list.selected_to_end.map { |t| t.id }
+    ids = @list.selected_to_end.map(&:id)
     pass_focus(application: "mozart", method: "play_ids", params: ids.join(", "))
   end
 
