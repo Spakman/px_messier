@@ -24,7 +24,7 @@ module Messier
 
     def tracks
       tracks = []
-      @query.order_by 'track_nr'
+      @query.order_by 'track_nr', :numasc
       @query.run.each do |row|
         tracks << Track.new(row)
       end
