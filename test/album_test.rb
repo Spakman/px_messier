@@ -18,8 +18,10 @@ class AlbumTest < Test::Unit::TestCase
     assert_equal Messier::Artist.get("Pendulum"), Messier::Album.all.first.artist
   end
 
-  def test_tracks
-    assert_equal Messier::Artist.get("Pendulum"), Messier::Album.all.first.artist
+  def test_tracks_are_ordered_by_track_nr
+    tracks = Messier::Album.all.last.tracks
+    assert_equal "In Bloom", tracks.first.to_s
+    assert_equal "Stay Away", tracks.last.to_s
   end
 
   def test_to_s
