@@ -64,6 +64,7 @@ end
 
 class Tracks < ListCard
   top_left :back
+  top_right :method => :queue
   jog_wheel_button :method => :play
 
   def play
@@ -71,9 +72,13 @@ class Tracks < ListCard
     pass_focus(application: "mozart", method: "play_ids", params: ids.join(", "))
   end
 
+  def queue
+    pass_focus(application: "mozart", method: "queue_ids", params: @list.selected.id)
+  end
+
   def show
     @list ||= Spandex::List.new @params.tracks
-    render "<button position=top_left>Back</button><title>Tracks</title>#{@list}"
+    render "<button position=top_left>Back</button><button position=top_right>Queue track</button><title>Tracks</title>#{@list}"
   end
 end
 
