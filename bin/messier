@@ -3,12 +3,12 @@
 $0 = "messier"
 $LOAD_PATH.unshift "#{ENV["PROJECT_X_BASE"]}/lib/"
 
-TABLE_FILEPATH = "#{ENV['HOME']}/src/project-x/mozart/project-x-musicdb.tct"
+TABLE_FILEPATH = "project-x-musicdb.tct"
 require "socket"
 require "spandex/application"
 require "spandex/card"
 require "spandex/list"
-require "messier/artist"
+require "messier/models/artist"
 
 class ListCard < Spandex::Card
   jog_wheel_left method: -> { @list.select_previous; show }

@@ -5,6 +5,9 @@ task :test do
   Dir.glob "#{File.dirname(__FILE__)}/test/*.rb" do |file|
     require file
   end
+  Dir.glob "#{File.dirname(__FILE__)}/test/*/*.rb" do |file|
+    require file
+  end
 end
 
 desc "Generate the RDoc HTML documentation"
