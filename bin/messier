@@ -9,6 +9,7 @@ require "spandex/application"
 require "spandex/card"
 require "spandex/list"
 require "messier/models/artist"
+require "messier/cards/menu_card"
 
 class ListCard < Spandex::Card
   jog_wheel_left method: -> { @list.select_previous; show }
@@ -16,16 +17,6 @@ class ListCard < Spandex::Card
   jog_wheel_button card: -> { @list.selected }
 end
 
-class Menu < ListCard
-  top_left :back
-
-  ITEMS = %w( Artists Genres Playlists )
-
-  def show
-    @list ||= Spandex::List.new ITEMS
-    render "<button position=top_left>Back</button><title>Mark's music</title>#{@list}"
-  end
-end
 
 class Genres < ListCard
   top_left :back
@@ -91,7 +82,7 @@ class Playlists < Spandex::Card
 end
 
 class Messier::Messier < Spandex::Application
-  entry_point :menu
+  entry_point "Messier::MenuCard"
 end
 
 Messier::Messier.new.run
