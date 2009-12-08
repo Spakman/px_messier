@@ -4,13 +4,27 @@
 
 require "spandex/card"
 require "spandex/list"
+require_relative "../models/genre"
+require_relative "artists_card"
 
 module Messier
   class Messier::GenresCard < Spandex::ListCard
     top_left :back
+    jog_wheel_button method: -> do
+      load_card Messier::ArtistsCard, genre: @list.selected
+    end
+
+    def after_initialize
+      @list ||= Spandex::List.new Genre.all
+      @title = "Genre"
+    end
 
     def show
-      render "<text>Show genres</text>"
+      render %{
+        <title>Genres</title>
+        <button position="top_left">Back</button>
+        #{@list}
+      }
     end
   end
 end

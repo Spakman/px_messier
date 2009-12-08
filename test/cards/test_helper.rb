@@ -43,9 +43,14 @@ class Test::Unit::CardTestCase < Test::Unit::TestCase
     @socket_string.sub /^<render \d+>\n/, ""
   end
 
-  def assert_card(card)
+  def assert_card(card, params = nil)
     message = "Expected active Card to be #{card}, but it was #{@application.cards.last}"
     assert_block(message) { @application.cards.last.class == card}
+
+    if params
+      message = "Expected card params to be #{params}, but there were #{@application.cards.last.params}"
+      assert_block(message) { @application.cards.last.params == params}
+    end
   end
 
   def assert_pass_focus(options = {})

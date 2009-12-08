@@ -11,9 +11,13 @@ module Messier
     attr_reader :name
 
     def initialize(row)
-      @name = row['genre']
+      @name = row['genre'] || row[:genre]
       @query = @@table.prepare_query
       @query.add_condition 'genre', :equals, @name
+    end
+
+    def self.get(name)
+      new(genre: name)
     end
 
     def hash
