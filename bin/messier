@@ -1,5 +1,4 @@
 #!/scratch/bin/ruby
-
 $0 = "messier"
 $LOAD_PATH.unshift "#{ENV["PROJECT_X_BASE"]}/lib/"
 

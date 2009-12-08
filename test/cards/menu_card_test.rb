@@ -1,11 +1,12 @@
-require "rubygems"
-require "fileutils"
 require_relative "test_helper"
+require_relative "../models/test_helper"
 require_relative "../../lib/cards/menu_card"
+require_relative "../../lib/models/model"
 
 class MenuCardTest < Test::Unit::CardTestCase
   def setup
     setup_card_test Messier::MenuCard
+    setup_data
   end
 
   def teardown
@@ -18,5 +19,23 @@ class MenuCardTest < Test::Unit::CardTestCase
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){3}}m, rendered
     assert_equal 3, @card.list.items.size
+  end
+
+  def test_artists
+    @card.list.selected_index = 0
+    @card.jog_wheel_button
+    assert_card Messier::ArtistsCard
+  end
+
+  def test_genres
+    @card.list.selected_index = 1
+    @card.jog_wheel_button
+    assert_card Messier::GenresCard
+  end
+
+  def test_play_all
+    @card.list.selected_index = 2
+    @card.jog_wheel_button
+    assert_pass_focus application: "mozart", method: "play_ids", params: %w{ 4 1 0 2 3 5 }
   end
 end

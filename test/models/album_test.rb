@@ -1,6 +1,3 @@
-require "rubygems"
-require "rufus/tokyo"
-require "test/unit"
 require_relative "test_helper"
 require_relative "../../lib/models/album"
 

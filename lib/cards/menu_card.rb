@@ -4,13 +4,26 @@
 
 require "spandex/card"
 require "spandex/list"
+require_relative "artists_card"
+require_relative "genres_card"
+require_relative "../models/artist"
 
 module Messier
   class Messier::MenuCard < Spandex::ListCard
     top_left :back
+    jog_wheel_button method: -> do
+      case @list.selected
+      when "Play all"
+        pass_focus application: "mozart", method: "play_ids", params: Messier::Track.all.map(&:id)
+      when "Artists"
+        load_card Messier::ArtistsCard
+      when "Genres"
+        load_card Messier::GenresCard
+      end
+    end
 
     def after_initialize
-      @list ||= Spandex::List.new %w( Artists Genres Playlists )
+      @list ||= Spandex::List.new [ "Artists", "Genres", "Play all" ]
     end
 
     def show

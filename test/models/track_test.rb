@@ -1,6 +1,3 @@
-require "rubygems"
-require "rufus/tokyo"
-require "test/unit"
 require_relative "test_helper"
 require_relative "../../lib/models/track"
 
@@ -17,7 +14,7 @@ class TrackTest < Test::Unit::TestCase
   def test_artist
     track = Messier::Artist.get("Nirvana").albums.first.tracks.first
     assert_equal Messier::Artist.get("Nirvana"), track.artist
-    assert_equal "pk0", track.id
+    assert_equal "0", track.id
   end
 
   def test_genre
