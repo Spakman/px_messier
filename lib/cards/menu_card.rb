@@ -14,7 +14,7 @@ module Messier
     jog_wheel_button method: -> do
       case @list.selected
       when "Play all"
-        pass_focus application: "mozart", method: "play_ids", params: Messier::Track.all.map(&:id)
+        pass_focus application: "mozart", method: "play_ids", params: Messier::Track.all.map(&:id).join(", ")
       when "Artists"
         load_card Messier::ArtistsCard
       when "Genres"
