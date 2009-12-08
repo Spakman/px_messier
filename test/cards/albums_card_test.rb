@@ -1,8 +1,6 @@
 require_relative "test_helper"
 require_relative "../models/test_helper"
 require_relative "../../lib/cards/albums_card"
-require_relative "../../lib/models/model"
-
 class AlbumsCardTest < Test::Unit::CardTestCase
   def setup
     setup_card_test Messier::AlbumsCard
@@ -39,5 +37,9 @@ class AlbumsCardTest < Test::Unit::CardTestCase
   end
 
   def test_select_album
+    nirvana = Messier::Artist.get("Nirvana")
+    @card.params = { artist: nirvana }
+    @card.jog_wheel_button
+    assert_card Messier::TracksCard, { artist: nirvana, album: nirvana.albums.first }
   end
 end

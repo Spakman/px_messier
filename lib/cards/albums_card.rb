@@ -5,10 +5,19 @@
 require "spandex/card"
 require "spandex/list"
 require_relative "../models/artist"
+require_relative "tracks_card"
 
 module Messier
   class Messier::AlbumsCard < Spandex::ListCard
     top_left :back
+
+    jog_wheel_button card: Messier::TracksCard, params: -> do
+      if @params and @params[:genre]
+        { genre: @params[:genre], artist: @params[:artist], album: @list.selected }
+      else
+        { album: @list.selected, artist: @params[:artist] }
+      end
+    end
 
     def after_initialize
       @list ||= Spandex::List.new Album.all
