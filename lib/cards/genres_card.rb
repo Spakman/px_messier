@@ -10,8 +10,9 @@ require_relative "artists_card"
 module Messier
   class Messier::GenresCard < Spandex::ListCard
     top_left :back
-    jog_wheel_button method: -> do
-      load_card Messier::ArtistsCard, genre: @list.selected
+
+    jog_wheel_button card: Messier::ArtistsCard, params: -> do
+      { genre: @list.selected }
     end
 
     def after_initialize

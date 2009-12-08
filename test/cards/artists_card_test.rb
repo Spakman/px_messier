@@ -31,4 +31,15 @@ class ArtistsCardTest < Test::Unit::CardTestCase
     assert_match %r{(<item.*>.+</item>.*){1}}m, rendered
     assert_equal 1, @card.list.items.size
   end
+
+  def test_select_artist
+    @card.jog_wheel_button
+    assert_card Messier::AlbumsCard, artist: Messier::Artist.get("Nirvana")
+  end
+
+  def test_select_artist_for_genre
+    @card.params = { genre: Messier::Genre.get("Grunge") }
+    @card.jog_wheel_button
+    assert_card Messier::AlbumsCard, { artist: Messier::Artist.get("Nirvana"), genre: Messier::Genre.get("Grunge") }
+  end
 end
