@@ -33,9 +33,9 @@ class MenuCardTest < Test::Unit::CardTestCase
     assert_card Messier::GenresCard
   end
 
-  def test_play_all
+  def test_tracks
     @card.list.selected_index = 2
     @card.jog_wheel_button
-    assert_pass_focus application: "mozart", method: "play_ids", params: "4, 1, 0, 2, 3, 5"
+    assert_card Messier::TracksCard
   end
 end

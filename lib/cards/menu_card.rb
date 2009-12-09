@@ -13,8 +13,8 @@ module Messier
     top_left :back
     jog_wheel_button method: -> do
       case @list.selected
-      when "Play all"
-        pass_focus application: "mozart", method: "play_ids", params: Messier::Track.all.map(&:id).join(", ")
+      when "Tracks"
+        load_card Messier::TracksCard
       when "Artists"
         load_card Messier::ArtistsCard
       when "Genres"
@@ -23,7 +23,7 @@ module Messier
     end
 
     def after_initialize
-      @list ||= Spandex::List.new [ "Artists", "Genres", "Play all" ]
+      @list ||= Spandex::List.new [ "Artists", "Genres", "Tracks" ]
     end
 
     def show
