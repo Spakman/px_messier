@@ -42,4 +42,9 @@ class ArtistsCardTest < Test::Unit::CardTestCase
     @card.jog_wheel_button
     assert_card Messier::AlbumsCard, { artist: Messier::Artist.get("Nirvana"), genre: Messier::Genre.get("Grunge") }
   end
+
+  def test_play_all_artists
+    @card.top_right
+    assert_pass_focus application: "mozart", method: "play_ids", params: "0, 1, 2, 5, 3, 4"
+  end
 end

@@ -19,6 +19,14 @@ module Messier
       end
     end
 
+    top_right :method => :play_all
+
+    def play_all
+      ids = []
+      @list.items.each { |a| ids += a.tracks.map(&:id) }
+      pass_focus(application: "mozart", method: "play_ids", params: ids.join(", "))
+    end
+
     def after_initialize
       @list ||= Spandex::List.new Album.all
       @title = "All albums"
@@ -45,6 +53,7 @@ module Messier
       render %{
         <title>#{@title}</title>
         <button position="top_left">Back</button>
+        <button position="top_right">Play all</button>
         #{@list}
       }
     end

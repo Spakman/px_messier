@@ -28,6 +28,8 @@ class TracksCardTest < Test::Unit::CardTestCase
     assert_match %r{<title>Nirvana -> Nevermind</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
+    assert_match /<button position="bottom_left">Queue all<\/button>/, rendered
+    assert_match /<button position="bottom_right">Queue track<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){4}}m, rendered
     assert_equal 4, @card.list.items.size
   end
@@ -43,5 +45,15 @@ class TracksCardTest < Test::Unit::CardTestCase
     @card.list.selected_index = 3
     @card.jog_wheel_button
     assert_pass_focus application: "mozart", method: "play_ids", params: "2, 3, 5"
+  end
+
+  def test_queue_track
+    @card.bottom_right
+    assert_pass_focus application: "mozart", method: "queue_ids", params: 4
+  end
+
+  def test_queue_all_tracks
+    @card.bottom_left
+    assert_pass_focus application: "mozart", method: "queue_ids", params: "4, 1, 0, 2, 3, 5"
   end
 end

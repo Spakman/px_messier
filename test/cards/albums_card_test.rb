@@ -42,4 +42,9 @@ class AlbumsCardTest < Test::Unit::CardTestCase
     @card.jog_wheel_button
     assert_card Messier::TracksCard, { artist: nirvana, album: nirvana.albums.first }
   end
+
+  def test_play_all_albums
+    @card.top_right
+    assert_pass_focus application: "mozart", method: "play_ids", params: "3, 4, 0, 1, 2, 5"
+  end
 end

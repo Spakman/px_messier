@@ -32,6 +32,7 @@ module Messier
       name <=> object.name
     end
 
+    # TODO: pull records out in a natural sort order.
     def self.all
       results = []
       column_name = self.to_s.downcase
