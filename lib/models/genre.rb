@@ -37,7 +37,9 @@ module Messier
       artists = []
       @query.order_by 'artist'
       @query.run.each do |row|
-        artists << Artist.new(row)
+        artist = Artist.new(row)
+        artist.genre = self
+        artists << artist
       end
       artists.uniq
     end

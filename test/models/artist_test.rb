@@ -28,4 +28,11 @@ class ArtistTest < Test::Unit::TestCase
   def test_to_s
     assert_equal "Nirvana", Messier::Artist.get("Nirvana").to_s
   end
+
+  def test_albums_limited_by_genre
+    artist = Messier::Artist.get("Nirvana")
+    artist.genre = Messier::Genre.get("Alternative rock")
+    assert_equal 1, artist.albums.size
+    assert_equal 1, artist.albums.first.tracks.size
+  end
 end

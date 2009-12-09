@@ -15,6 +15,12 @@ module Messier
       @query.add_condition 'artist', :equals, @name
     end
 
+    # Adds a condition to limit database pulls to a genre.
+    def genre=(genre)
+      @genre = genre
+      @query.add_condition 'genre', :equals, genre.name
+    end
+
     def self.get(name)
       new(artist: name)
     end
@@ -23,7 +29,9 @@ module Messier
       albums = []
       @query.order_by 'album'
       @query.run.each do |row|
-        albums << Album.new(row)
+        album = Album.new(row)
+        album.genre = @genre if @genre
+        albums << album
       end
       albums.uniq
     end

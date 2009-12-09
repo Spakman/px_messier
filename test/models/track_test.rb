@@ -7,23 +7,23 @@ class TrackTest < Test::Unit::TestCase
   end
 
   def test_all
-    assert_equal 6, Messier::Track.all.length
-    assert_equal "In Bloom", Messier::Artist.get("Nirvana").albums.first.tracks.first.name
+    assert_equal 8, Messier::Track.all.length
+    assert_equal "Blew", Messier::Artist.get("Nirvana").albums.first.tracks.first.name
   end
 
   def test_artist
     track = Messier::Artist.get("Nirvana").albums.first.tracks.first
     assert_equal Messier::Artist.get("Nirvana"), track.artist
-    assert_equal "0", track.id
+    assert_equal "6", track.id
   end
 
   def test_genre
     track = Messier::Artist.get("Nirvana").albums.first.tracks.first
-    assert_equal "Grunge", track.genre.name
+    assert_equal "Alternative rock", track.genre.name
   end
 
   def test_to_s
     track = Messier::Artist.get("Nirvana").albums.first.tracks.first
-    assert_equal "In Bloom", track.to_s
+    assert_equal "Blew", track.to_s
   end
 end

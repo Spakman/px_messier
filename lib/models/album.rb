@@ -18,6 +18,13 @@ module Messier
       @query.add_condition 'artist', :equals, @artist.name
     end
 
+
+    # Adds a condition to limit database pulls to a genre.
+    def genre=(genre)
+      @genre = genre
+      @query.add_condition 'genre', :equals, genre.name
+    end
+
     def hash
       (@name + @artist.name).hash
     end

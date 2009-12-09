@@ -11,6 +11,8 @@ def setup_data
   @table = Rufus::Tokyo::Table.new(TABLE_FILEPATH)
   @table[0] = { 'artist' => 'Nirvana', 'album' => 'Nevermind', 'track' => 'In Bloom', 'genre' => 'Grunge', 'track_nr' => '2' }
   @table[1] = { 'artist' => 'Nirvana', 'album' => 'Nevermind', 'track' => 'Breed', 'genre' => 'Grunge', 'track_nr' => '4' }
+  @table[6] = { 'artist' => 'Nirvana', 'album' => 'Bleach', 'track' => 'Blew', 'genre' => 'Alternative rock', 'track_nr' => '1' }
+  @table[7] = { 'artist' => 'Nirvana', 'album' => 'Bleach', 'track' => 'Floyd the Barber', 'genre' => 'Grunge', 'track_nr' => '2' }
   @table[2] = { 'artist' => 'Nirvana', 'album' => 'Nevermind', 'track' => 'Lithium', 'genre' => 'Grunge', 'track_nr' => '5' }
   @table[5] = { 'artist' => 'Nirvana', 'album' => 'Nevermind', 'track' => 'Stay Away', 'genre' => 'Grunge', 'track_nr' => '10' }
   @table[3] = { 'artist' => 'Pendulum', 'album' => 'Hold Your Colour', 'track' => 'Slam', 'genre' => 'Drum and bass' }

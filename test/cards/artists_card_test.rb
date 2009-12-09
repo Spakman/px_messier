@@ -45,6 +45,6 @@ class ArtistsCardTest < Test::Unit::CardTestCase
 
   def test_play_all_artists
     @card.top_right
-    assert_pass_focus application: "mozart", method: "play_ids", params: "0, 1, 2, 5, 3, 4"
+    assert_pass_focus application: "mozart", method: "play_ids", params: "6, 7, 0, 1, 2, 5, 3, 4"
   end
 end
