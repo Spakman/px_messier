@@ -14,7 +14,7 @@ class TracksCardTest < Test::Unit::CardTestCase
 
   def test_show_all
     @card.show
-    assert_match %r{<title>Tracks</title>}m, rendered
+    assert_match %r{<title>All tracks</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){5}}m, rendered
@@ -25,7 +25,7 @@ class TracksCardTest < Test::Unit::CardTestCase
     nirvana = Messier::Artist.get("Nirvana")
     @card.params = { artist: nirvana, album: nirvana.albums.first }
     @card.show
-    assert_match %r{<title>Nirvana -> Nevermind -> Tracks</title>}m, rendered
+    assert_match %r{<title>Nirvana -> Nevermind</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){4}}m, rendered
@@ -36,7 +36,7 @@ class TracksCardTest < Test::Unit::CardTestCase
     nirvana = Messier::Artist.get("Nirvana")
     @card.params = { artist: nirvana, album: nirvana.albums.first, genre: nirvana.albums.first.tracks.first.genre }
     @card.show
-    assert_match %r{<title>Grunge -> Nirvana -> Nevermind -> Tracks</title>}m, rendered
+    assert_match %r{<title>Grunge -> .. -> Nevermind</title>}m, rendered
   end
 
   def test_select_tracks

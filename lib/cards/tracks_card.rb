@@ -18,7 +18,7 @@ module Messier
 
     def after_initialize
       @list ||= Spandex::List.new Track.all
-      @title = "Tracks"
+      @title = "All tracks"
     end
 
     def params=(params)
@@ -27,13 +27,13 @@ module Messier
         if params[:album]
           @list = Spandex::List.new params[:album].tracks
           if params[:genre]
-            @title = "#{params[:genre]} -> #{params[:artist]} -> #{params[:album].name} -> Tracks"
+            @title = "#{params[:genre]} -> .. -> #{params[:album].name}"
           else
-            @title = "#{params[:artist]} -> #{params[:album].name} -> Tracks"
+            @title = "#{params[:artist]} -> #{params[:album].name}"
           end
         else
           @list = Spandex::List.new Track.all
-          @title = "Tracks"
+          @title = "All tracks"
         end
       end
     end

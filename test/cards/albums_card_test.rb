@@ -13,7 +13,7 @@ class AlbumsCardTest < Test::Unit::CardTestCase
 
   def test_show_all
     @card.show
-    assert_match %r{<title>Albums</title>}m, rendered
+    assert_match %r{<title>All albums</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){2}}m, rendered
@@ -23,7 +23,7 @@ class AlbumsCardTest < Test::Unit::CardTestCase
   def test_show_albums_for_artist
     @card.params = { artist: Messier::Artist.get("Nirvana") }
     @card.show
-    assert_match %r{<title>Nirvana -> Albums</title>}m, rendered
+    assert_match %r{<title>Nirvana</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){1}}m, rendered
@@ -33,7 +33,7 @@ class AlbumsCardTest < Test::Unit::CardTestCase
   def test_show_albums_for_artist_under_genre
     @card.params = { genre: Messier::Genre.get("Grunge"), artist: Messier::Artist.get("Nirvana") }
     @card.show
-    assert_match %r{<title>Grunge -> Nirvana -> Albums</title>}m, rendered
+    assert_match %r{<title>Grunge -> Nirvana</title>}m, rendered
   end
 
   def test_select_album
