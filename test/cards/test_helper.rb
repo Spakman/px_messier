@@ -31,7 +31,7 @@ end
 
 class Test::Unit::CardTestCase < Test::Unit::TestCase
   def setup_card_test(card)
-    TestApplication.entry_point card.to_s
+    TestApplication.entry_point card
     @socket_string = ""
     FileUtils.rm_f "/tmp/#{File.basename($0)}.socket"
     UNIXServer.open "/tmp/#{File.basename($0)}.socket"

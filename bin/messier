@@ -8,7 +8,7 @@ require "spandex/application"
 require "messier/cards/menu_card"
 
 class Messier::Messier < Spandex::Application
-  entry_point "Messier::MenuCard"
+  entry_point Messier::MenuCard
 end
 
 Messier::Messier.new.run
