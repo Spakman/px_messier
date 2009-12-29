@@ -5,6 +5,18 @@ class AlbumTest < Test::Unit::TestCase
   def setup
     setup_data
   end
+
+  def test_equality
+    spakman_hits = Messier::Album.new name: "Greatest Hits", artist: "Spakman"
+    nunpuncher_hits = Messier::Album.new name: "Greatest Hits", artist: "Nunpuncher"
+    refute_equal spakman_hits, nunpuncher_hits
+  end
+
+  def test_uniq
+    spakman_hits = Messier::Album.new name: "Greatest Hits", artist: "Spakman"
+    nunpuncher_hits = Messier::Album.new name: "Greatest Hits", artist: "Nunpuncher"
+    assert_equal 2, [ spakman_hits, nunpuncher_hits ].uniq.size
+  end
   
   # TODO: natural sort order.
   def test_all

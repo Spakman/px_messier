@@ -17,13 +17,15 @@ module Messier
         load_card Messier::TracksCard
       when "Artists"
         load_card Messier::ArtistsCard
+      when "Albums"
+        load_card Messier::AlbumsCard
       when "Genres"
         load_card Messier::GenresCard
       end
     end
 
     def after_initialize
-      @list ||= Spandex::List.new [ "Artists", "Genres", "Tracks" ]
+      @list ||= Spandex::List.new [ "Artists", "Genres", "Albums", "Tracks" ]
     end
 
     def show

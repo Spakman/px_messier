@@ -11,13 +11,12 @@ module Messier
     attr_reader :name, :artist
 
     def initialize(row)
-      @name = row['album']
+      @name = row['album'] || row[:artist]
       @artist = Artist.new row
       @query = @@table.prepare_query
       @query.add_condition 'album', :equals, @name
       @query.add_condition 'artist', :equals, @artist.name
     end
-
 
     # Adds a condition to limit database pulls to a genre.
     def genre=(genre)

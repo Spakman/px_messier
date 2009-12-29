@@ -15,7 +15,7 @@ module Messier
       if @params and @params[:genre]
         { genre: @params[:genre], artist: @params[:artist], album: @list.selected }
       else
-        { album: @list.selected, artist: @params[:artist] }
+        { album: @list.selected, artist: @list.selected.artist }
       end
     end
 

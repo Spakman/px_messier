@@ -18,7 +18,7 @@ class MenuCardTest < Test::Unit::CardTestCase
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){3}}m, rendered
-    assert_equal 3, @card.list.items.size
+    assert_equal 4, @card.list.items.size
   end
 
   def test_artists
@@ -36,6 +36,6 @@ class MenuCardTest < Test::Unit::CardTestCase
   def test_tracks
     @card.list.selected_index = 2
     @card.jog_wheel_button
-    assert_card Messier::TracksCard
+    assert_card Messier::AlbumsCard
   end
 end
