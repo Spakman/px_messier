@@ -18,7 +18,7 @@ class TracksCardTest < Test::Unit::CardTestCase
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){5}}m, rendered
-    assert_equal 8, @card.list.items.size
+    assert_equal 9, @card.list.items.size
   end
 
   def test_show_tracks_for_artist_album
@@ -44,7 +44,7 @@ class TracksCardTest < Test::Unit::CardTestCase
   def test_select_tracks
     @card.list.selected_index = 3
     @card.jog_wheel_button
-    assert_pass_focus application: "mozart", method: "play_ids", params: "7, 0, 2, 3, 5"
+    assert_pass_focus application: "mozart", method: "play_ids", params: "7, 0, 8, 2, 3, 5"
   end
 
   def test_queue_track
@@ -54,6 +54,6 @@ class TracksCardTest < Test::Unit::CardTestCase
 
   def test_queue_all_tracks
     @card.bottom_left
-    assert_pass_focus application: "mozart", method: "queue_ids", params: "4, 6, 1, 7, 0, 2, 3, 5"
+    assert_pass_focus application: "mozart", method: "queue_ids", params: "4, 6, 1, 7, 0, 8, 2, 3, 5"
   end
 end

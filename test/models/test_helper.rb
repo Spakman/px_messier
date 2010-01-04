@@ -17,6 +17,7 @@ def setup_data
   @table[5] = { 'artist' => 'Nirvana', 'album' => 'Nevermind', 'track' => 'Stay Away', 'genre' => 'Grunge', 'track_nr' => '10' }
   @table[3] = { 'artist' => 'Pendulum', 'album' => 'Hold Your Colour', 'track' => 'Slam', 'genre' => 'Drum and bass' }
   @table[4] = { 'artist' => 'Pendulum', 'album' => 'Hold Your Colour', 'track' => 'Another Planet', 'genre' => 'Drum and bass' }
+  @table[8] = { 'artist' => 'king unique', 'album' => 'Essential Mixes', 'track' => 'King Unique 31/10/1004', 'genre' => 'House' }
   @table.close
   Messier::Model.open_table
 end

@@ -16,7 +16,7 @@ class ArtistTest < Test::Unit::TestCase
   end
 
   def test_all_alphabetical
-    assert_equal [ Messier::Artist.get("Nirvana"), Messier::Artist.get("Pendulum") ], Messier::Artist.all
+    assert_equal [ Messier::Artist.get("king unique"), Messier::Artist.get("Nirvana"), Messier::Artist.get("Pendulum") ], Messier::Artist.all
     assert_not_equal [ Messier::Artist.get("Pendulum"), Messier::Artist.get("Nirvana") ], Messier::Artist.all
   end
 

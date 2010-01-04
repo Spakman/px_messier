@@ -3,6 +3,7 @@
 # See COPYING
 
 require "rufus/tokyo"
+require_relative "../natural_compare"
 
 module Messier
   class Model
@@ -32,7 +33,6 @@ module Messier
       name <=> object.name
     end
 
-    # TODO: pull records out in a natural sort order.
     def self.all
       results = []
       column_name = self.to_s.downcase
@@ -42,7 +42,7 @@ module Messier
       rows.each do |row|
         results << self.new(row)
       end
-      results.sort.uniq
+      results.sort {|a,b| String.natural_compare(a.name, b.name) }.uniq
     end
   end
 end

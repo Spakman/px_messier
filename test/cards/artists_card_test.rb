@@ -19,7 +19,7 @@ class ArtistsCardTest < Test::Unit::CardTestCase
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){2}}m, rendered
-    assert_equal 2, @card.list.items.size
+    assert_equal 3, @card.list.items.size
   end
 
   def test_show_artists_for_genre
@@ -34,7 +34,7 @@ class ArtistsCardTest < Test::Unit::CardTestCase
 
   def test_select_artist
     @card.jog_wheel_button
-    assert_card Messier::AlbumsCard, artist: Messier::Artist.get("Nirvana")
+    assert_card Messier::AlbumsCard, artist: Messier::Artist.get("king unique")
   end
 
   def test_select_artist_for_genre
@@ -45,6 +45,6 @@ class ArtistsCardTest < Test::Unit::CardTestCase
 
   def test_play_all_artists
     @card.top_right
-    assert_pass_focus application: "mozart", method: "play_ids", params: "6, 7, 0, 1, 2, 5, 3, 4"
+    assert_pass_focus application: "mozart", method: "play_ids", params: "8, 6, 7, 0, 1, 2, 5, 3, 4"
   end
 end

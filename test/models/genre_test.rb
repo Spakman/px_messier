@@ -7,7 +7,7 @@ class GenreTest < Test::Unit::TestCase
   end
 
   def test_all
-    assert_equal 3, Messier::Genre.all.length
+    assert_equal 4, Messier::Genre.all.length
     assert_equal "Alternative rock", Messier::Artist.get("Nirvana").albums.first.tracks.first.genre.name
   end
 

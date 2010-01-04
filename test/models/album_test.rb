@@ -18,9 +18,8 @@ class AlbumTest < Test::Unit::TestCase
     assert_equal 2, [ spakman_hits, nunpuncher_hits ].uniq.size
   end
   
-  # TODO: natural sort order.
   def test_all
-    assert_equal 3, Messier::Album.all.length
+    assert_equal 4, Messier::Album.all.length
     assert_equal "Bleach", Messier::Album.all.first.name
   end
 

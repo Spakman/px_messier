@@ -18,7 +18,7 @@ class AlbumsCardTest < Test::Unit::CardTestCase
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){3}}m, rendered
-    assert_equal 3, @card.list.items.size
+    assert_equal 4, @card.list.items.size
   end
 
   def test_show_albums_for_artist
@@ -45,6 +45,6 @@ class AlbumsCardTest < Test::Unit::CardTestCase
 
   def test_play_all_albums
     @card.top_right
-    assert_pass_focus application: "mozart", method: "play_ids", params: "6, 7, 3, 4, 0, 1, 2, 5"
+    assert_pass_focus application: "mozart", method: "play_ids", params: "6, 7, 8, 3, 4, 0, 1, 2, 5"
   end
 end

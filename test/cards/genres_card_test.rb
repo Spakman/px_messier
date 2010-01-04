@@ -19,7 +19,7 @@ class GenresCardTest < Test::Unit::CardTestCase
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
     assert_match %r{(<item.*>.+</item>.*){2}}m, rendered
-    assert_equal 3, @card.list.items.size
+    assert_equal 4, @card.list.items.size
   end
 
   def test_select_genre
