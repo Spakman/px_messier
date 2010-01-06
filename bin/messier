@@ -9,6 +9,7 @@ require "messier/cards/menu_card"
 
 class Messier::Messier < Spandex::Application
   entry_point Messier::MenuCard
+  can_run_in_background
 end
 
 Messier::Messier.new.run
