@@ -23,6 +23,13 @@ module Messier
       @query.add_condition 'artist', :equals, @artist.name
     end
 
+    def self.pk(key)
+      row = @@table[key]
+      if row
+        new(row)
+      end
+    end
+
     def hash
       (@name + @album.name + @artist.name).hash
     end
