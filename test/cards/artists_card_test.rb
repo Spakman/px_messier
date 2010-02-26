@@ -14,7 +14,7 @@ class ArtistsCardTest < Test::Unit::CardTestCase
   end
 
   def test_show_all
-    @card.show
+    @card.call_show_chain
     assert_match %r{<title>All artists</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered
@@ -24,7 +24,7 @@ class ArtistsCardTest < Test::Unit::CardTestCase
 
   def test_show_artists_for_genre
     @card.params = { genre: Messier::Genre.get("Drum and bass") }
-    @card.show
+    @card.call_show_chain
     assert_match %r{<title>Drum and bass</title>}m, rendered
     assert_match /<list>/, rendered
     assert_match /<button position="top_left">Back<\/button>/, rendered

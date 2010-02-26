@@ -12,8 +12,8 @@ module Messier
     top_left :back
 
     jog_wheel_button card: Messier::TracksCard, params: -> do
-      if @params and @params[:genre]
-        { genre: @params[:genre], artist: @params[:artist], album: @list.selected }
+      if params and params[:genre]
+        { genre: params[:genre], artist: params[:artist], album: @list.selected }
       else
         { album: @list.selected, artist: @list.selected.artist }
       end
@@ -32,20 +32,17 @@ module Messier
       @title = "All albums"
     end
 
-    def params=(params)
-      if params != @params
-        @params = params
-        if params[:artist]
-          @list = Spandex::List.new params[:artist].albums
-          if params[:genre]
-            @title = "#{params[:genre].name} -> #{params[:artist].name}"
-          else
-            @title = "#{params[:artist].name}"
-          end
+    def after_load
+      if params[:artist]
+        @list = Spandex::List.new params[:artist].albums
+        if params[:genre]
+          @title = "#{params[:genre].name} -> #{params[:artist].name}"
         else
-          @list = Spandex::List.new Album.all
-          @title = "Albums"
+          @title = "#{params[:artist].name}"
         end
+      else
+        @list = Spandex::List.new Album.all
+        @title = "All albums"
       end
     end
 
