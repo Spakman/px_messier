@@ -8,7 +8,9 @@ require_relative "../models/genre"
 require_relative "artists_card"
 
 module Messier
-  class Messier::GenresCard < Spandex::ListCard
+  class Messier::GenresCard < Spandex::Card
+    include JogWheelListMethods
+
     top_left :back
 
     jog_wheel_button card: Messier::ArtistsCard, params: -> do

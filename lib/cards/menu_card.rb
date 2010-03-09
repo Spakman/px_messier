@@ -9,7 +9,9 @@ require_relative "genres_card"
 require_relative "../models/artist"
 
 module Messier
-  class Messier::MenuCard < Spandex::ListCard
+  class Messier::MenuCard < Spandex::Card
+    include JogWheelListMethods
+
     top_left :back
     jog_wheel_button method: -> do
       case @list.selected

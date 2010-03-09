@@ -7,7 +7,9 @@ require "spandex/list"
 require_relative "../models/track"
 
 module Messier
-  class Messier::TracksCard < Spandex::ListCard
+  class Messier::TracksCard < Spandex::Card
+    include JogWheelListMethods
+
     top_left :back
     jog_wheel_button :method => :play
     bottom_right :method => :queue_track
